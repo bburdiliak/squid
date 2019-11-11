@@ -49,21 +49,22 @@ module Squid
     end
 
     ATTRIBUTES = {
-      baseline:     {as: boolean,        default: 'true'},
-      border:       {as: boolean,        default: 'false'},
-      chart:        {as: boolean,        default: 'true'},
-      colors:       {as: array},
-      every:        {as: integer,        default: '1'},
-      formats:      {as: array(symbol)},
-      height:       {as: float,          default: '250'},
-      labels:       {as: array(boolean)},
-      legend:       {as: boolean,        default: 'true'},
-      line_widths:  {as: array(float)},
-      min:          {as: integer},
-      max:          {as: integer},
-      steps:        {as: integer,        default: '4'},
-      ticks:        {as: boolean,        default: 'true'},
-      type:         {as: symbol,         default: 'column'},
+      baseline:                          {as: boolean,        default: 'true'},
+      border:                            {as: boolean,        default: 'false'},
+      chart:                             {as: boolean,        default: 'true'},
+      colors:                            {as: array},
+      every:                             {as: integer,        default: '1'},
+      formats:                           {as: array(symbol)},
+      height:                            {as: float,          default: '250'},
+      labels:                            {as: array(boolean)},
+      legend:                            {as: boolean,        default: 'true'},
+      line_widths:                       {as: array(float)},
+      min:                               {as: integer},
+      max:                               {as: integer},
+      steps:                             {as: integer,        default: '4'},
+      ticks:                             {as: boolean,        default: 'true'},
+      type:                              {as: symbol,         default: 'column'},
+      change_color_within_serie:         {as: boolean,        default: 'false'},
     }
 
     attr_accessor *ATTRIBUTES.keys

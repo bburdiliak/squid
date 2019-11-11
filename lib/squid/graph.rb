@@ -13,7 +13,7 @@ module Squid
   class Graph
     extend Settings
     has_settings :baseline, :border, :chart, :colors, :every, :formats, :height
-    has_settings :legend, :line_widths, :min, :max, :steps, :ticks, :type, :labels
+    has_settings :legend, :line_widths, :min, :max, :steps, :ticks, :type, :labels, :change_color_within_serie
 
     def initialize(document, data = {}, settings = {})
       @data, @settings = data, settings
@@ -73,7 +73,7 @@ module Squid
       case (second_axis ? :column : type)
         when :point then @plot.points points, options
         when :line, :two_axis then @plot.lines points, options.merge(line_widths: line_widths)
-        when :column then @plot.columns points, options
+        when :column then @plot.columns points, options.merge(change_color_within_serie: change_color_within_serie)
         when :stack then @plot.stacks points, options
       end
     end

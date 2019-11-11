@@ -135,13 +135,17 @@ module Squid
       options
     end
 
-    def items(series, colors: [], fill: false, count: 1, starting_at: 0, &block)
+    def items(series, colors: [], fill: false, count: 1, starting_at: 0, change_color_within_serie: false, &block)
       series.reverse_each.with_index do |points, reverse_index|
         index = series.size - reverse_index - 1
         color_index = index + starting_at
         w = width / points.size.to_f
         series_color = colors.fetch color_index, series_colors(color_index)
-        item_color = Array.wrap(series_color).cycle
+        item_color = if change_color_within_serie
+                       Array.wrap(colors).cycle
+                     else
+                       Array.wrap(series_color).cycle
+                     end
         points.select(&:y).each do |point|
           item point, item_color.next, w, fill, index, count, &block
         end
